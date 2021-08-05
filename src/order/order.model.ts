@@ -1,3 +1,5 @@
+import { Status } from "../status.model";
+
 export class Order {
 constructor(
     public id: string,
