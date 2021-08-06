@@ -22,6 +22,7 @@ import { OrderHttpModule } from './order-http/order-http.module';
     database: 'test',
     entities: [],
     synchronize: true,
+    autoLoadEntities: true,
   }), OrderHttpModule,],
   controllers: [AppController],
   providers: [AppService, Order, Inventory, KitchenService, InventoryService, OrderService],
