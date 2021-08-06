@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import {Order} from './order.model';
+import {Order} from './order.entity';
 import { diskStorage } from 'multer';
 
 @Injectable()

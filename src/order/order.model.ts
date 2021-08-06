@@ -16,18 +16,3 @@ export class User {
   @Column({ default: true })
   isActive: boolean;
 }
-
-@Entity()
-export class Order {
-    @PrimaryGeneratedColumn()
-    public id: number;
-
-    @Column()
-    public title: string;
-
-    @Column()
-    public status: Status;
-
-    @Column()
-    public time: number;
-}
