@@ -1,7 +1,8 @@
 import { Injectable } from "@nestjs/common";
 import {Order} from './order.entity';
 import { diskStorage } from 'multer';
-import { Connection } from "typeorm";
+import { Connection, ConnectionManager, Repository } from "typeorm";
+
 
 @Injectable()
 export class OrderService {
