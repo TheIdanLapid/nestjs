@@ -10,6 +10,7 @@ import { InventoryService } from './inventory/inventory.service';
 import { OrderService } from './order/order.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Connection } from 'typeorm';
+import { OrderHttpModule } from './order-http/order-http.module';
 
 @Module({
   imports: [OrderModule, PizzaModule, TypeOrmModule.forRoot({
@@ -21,7 +22,7 @@ import { Connection } from 'typeorm';
     database: 'test',
     entities: [],
     synchronize: true,
-  }),],
+  }), OrderHttpModule,],
   controllers: [AppController],
   providers: [AppService, Order, Inventory, KitchenService, InventoryService, OrderService],
 })
