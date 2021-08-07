@@ -4,13 +4,14 @@ import { OrderController } from './order.controller';
 import { Order } from './order.entity';
 import { OrderService } from './order.service';
 import { OrderSubscriber } from './order.subscriber';
+import { orderMockRepo } from './order.mock';
 
 @Module({
     imports: [TypeOrmModule.forFeature([Order])],
     providers: [OrderService,
         {
         provide: getRepositoryToken(Order),
-        useValue: ordersMockRepo
+        useValue: orderMockRepo
     },
     OrderSubscriber],
     controllers: [OrderController],

@@ -1,3 +1,3 @@
-export orderMockRepo = {
-    
+export class orderMockRepo {
+
 }

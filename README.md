@@ -17,3 +17,8 @@ orders and update them and the inventory automatically.
  
 The end user (customer) should be able to create orders via the order microservice and check 
 the order status from time to time (and see it updated automatically).
+Additional tips:
+● You can choose any communication protocol that you like, and explain why you chose it.
+Note that microservices can communicate synchronously or asynchronously.
+● You can store the data in memory (setting up a DB is not required)
+● We recommend checking out ​ https://microservices.io/​ for best practices.

@@ -1,6 +1,4 @@
-import { Status } from "../status.model";
-
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
 
 @Entity()
 export class Order {
@@ -11,5 +9,5 @@ export class Order {
     public toppings: string;
 
     @Column()
-    public status: Status;
+    public status: string;
 }

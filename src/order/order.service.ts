@@ -8,6 +8,11 @@ import { Connection, ConnectionManager, Repository } from "typeorm";
 export class OrderService {
 constructor(private connection: Connection) {}
 
+// const Database = require('better-sqlite3');
+// const db = new this.Database('foobar.db', { verbose: console.log });
+
+// const row = this.db.prepare('SELECT * FROM users WHERE id = ?').get(1);
+// console.log(row.firstName, row.lastName, row.email);
 
 async createMany(orders: Order[]) {
     const queryRunner = this.connection.createQueryRunner();
