@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { getRepositoryToken, TypeOrmModule } from '@nestjs/typeorm';
 import { OrderController } from './order.controller';
-import { Order } from './order.entity';
+import { Order } from '../../order.entity';
 import { OrderService } from './order.service';
 import { OrderSubscriber } from './order.subscriber';
 import { orderMockRepo } from './order.mock';

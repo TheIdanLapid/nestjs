@@ -1,8 +1,6 @@
-import { Status } from "../status.model";
-export declare class Order {
-    id: string;
-    title: string;
-    status: Status;
-    time: number;
-    constructor(id: string, title: string, status: Status, time: number);
+export declare class User {
+    id: number;
+    firstName: string;
+    lastName: string;
+    isActive: boolean;
 }

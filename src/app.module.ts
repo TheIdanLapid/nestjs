@@ -14,15 +14,10 @@ import { OrderHttpModule } from './order-http/order-http.module';
 
 @Module({
   imports: [OrderModule, PizzaModule, TypeOrmModule.forRoot({
-    type: 'mysql',
-    host: 'localhost',
-    port: 3306,
-    username: 'root',
-    password: 'root',
-    database: 'test',
-    entities: [],
-    synchronize: true,
-    autoLoadEntities: true,
+    type: 'sqlite',
+    database: 'db',
+    entities: ["{src, dist}/**/*.entity{.ts,.js}]"],
+    synchronize: true
   }), OrderHttpModule,],
   controllers: [AppController],
   providers: [AppService, Order, Inventory, KitchenService, InventoryService, OrderService],

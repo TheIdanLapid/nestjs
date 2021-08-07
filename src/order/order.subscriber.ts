@@ -5,7 +5,7 @@ import {
     EventSubscriber,
     InsertEvent,
   } from 'typeorm';
-  import { Order } from './order.entity';
+  import { Order } from '../../order.entity';
   
   @EventSubscriber()
   export class OrderSubscriber implements EntitySubscriberInterface<Order> {

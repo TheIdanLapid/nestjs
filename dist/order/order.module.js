@@ -8,10 +8,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OrderModule = void 0;
 const common_1 = require("@nestjs/common");
+const typeorm_1 = require("@nestjs/typeorm");
+const order_controller_1 = require("./order.controller");
+const order_entity_1 = require("./order.entity");
+const order_service_1 = require("./order.service");
+const order_subscriber_1 = require("./order.subscriber");
+const order_mock_1 = require("./order.mock");
 let OrderModule = class OrderModule {
 };
 OrderModule = __decorate([
-    common_1.Module({})
+    common_1.Module({
+        imports: [typeorm_1.TypeOrmModule.forFeature([order_entity_1.Order])],
+        providers: [order_service_1.OrderService,
+            {
+                provide: typeorm_1.getRepositoryToken(order_entity_1.Order),
+                useValue: order_mock_1.orderMockRepo
+            },
+            order_subscriber_1.OrderSubscriber],
+        controllers: [order_controller_1.OrderController],
+    })
 ], OrderModule);
 exports.OrderModule = OrderModule;
 //# sourceMappingURL=order.module.js.map
