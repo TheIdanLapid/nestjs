@@ -1,6 +1,5 @@
 import { Injectable } from "@nestjs/common";
 import {Order} from '../../order.entity';
-import { diskStorage } from 'multer';
 import { Connection, ConnectionManager, Repository } from "typeorm";
 
 
@@ -8,10 +7,10 @@ import { Connection, ConnectionManager, Repository } from "typeorm";
 export class OrderService {
     
 constructor(private connection: Connection) {
-    @InjectRepository(Order)
-    usersRepository: new Repository<Order>() {
+    // @InjectRepository(Order)
+    // const orders Repository<Order>() {
         
-    };
+    // };
 }
 
 // const Database = require('better-sqlite3');
