@@ -11,10 +11,11 @@ import { OrderService } from './order/order.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Connection } from 'typeorm';
 import { OrderHttpModule } from './order-http/order-http.module';
+import { TestModule } from './test/test.module';
 import config from '../ormconfig';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(config)],
+  imports: [TypeOrmModule.forRoot(config), TestModule],
   controllers: [AppController],
   providers: [AppService, Order, Inventory, KitchenService, InventoryService, OrderService],
 })

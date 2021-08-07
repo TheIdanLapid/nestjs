@@ -3,15 +3,18 @@ import { AppModule } from './app.module';
 import { Ingredient } from './ingredient';
 import { Inventory } from './inventory';
 import { Kitchen } from './kitchen';
+import { Mushrooms } from './mushrooms';
 import { Order } from './order';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
     await app.listen(3000);
     
+    var m: Mushrooms;
     var inventory: Inventory;
     var orders: Order[];
 
+    inventory.setToppings([m, m]);
     const kitchen: Kitchen = new Kitchen(inventory, orders);
 
     var stdin = process.openStdin();
