@@ -11,14 +11,10 @@ import { OrderService } from './order/order.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Connection } from 'typeorm';
 import { OrderHttpModule } from './order-http/order-http.module';
+import config from '../ormconfig';
 
 @Module({
-  imports: [OrderModule, PizzaModule, TypeOrmModule.forRoot({
-    type: 'sqlite',
-    database: 'db',
-    entities: ["{src, dist}/**/*.entity{.ts,.js}]"],
-    synchronize: true
-  }), OrderHttpModule,],
+  imports: [TypeOrmModule.forRoot(config)],
   controllers: [AppController],
   providers: [AppService, Order, Inventory, KitchenService, InventoryService, OrderService],
 })

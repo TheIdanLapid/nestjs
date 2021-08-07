@@ -19,23 +19,23 @@ constructor(private connection: Connection) {
 // const row = this.db.prepare('SELECT * FROM users WHERE id = ?').get(1);
 // console.log(row.firstName, row.lastName, row.email);
 
-async createMany(orders: Order[]) {
-    const queryRunner = this.connection.createQueryRunner();
+// async createMany(orders: Order[]) {
+//     const queryRunner = this.connection.createQueryRunner();
   
-    await queryRunner.connect();
-    await queryRunner.startTransaction();
-    try {
-      await queryRunner.manager.save(orders[0]);
-      await queryRunner.manager.save(orders[1]);
+//     await queryRunner.connect();
+//     await queryRunner.startTransaction();
+//     try {
+//       await queryRunner.manager.save(orders[0]);
+//       await queryRunner.manager.save(orders[1]);
   
-      await queryRunner.commitTransaction();
-    } catch (err) {
-      // since we have errors lets rollback the changes we made
-      await queryRunner.rollbackTransaction();
-    } finally {
-      // you need to release a queryRunner which was manually instantiated
-      await queryRunner.release();
-    }
-  }
+//       await queryRunner.commitTransaction();
+//     } catch (err) {
+//       // since we have errors lets rollback the changes we made
+//       await queryRunner.rollbackTransaction();
+//     } finally {
+//       // you need to release a queryRunner which was manually instantiated
+//       await queryRunner.release();
+//     }
+//   }
   
 }
