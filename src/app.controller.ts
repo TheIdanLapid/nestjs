@@ -1,4 +1,5 @@
 import { Controller, Get, Logger } from '@nestjs/common';
+import { Order } from '../order.entity';
 import { AppService } from './app.service';
 
 @Controller()
@@ -7,8 +8,7 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello(): string {
-    this.logger.log('Getting hello');
-    return this.appService.getHello();
+  async getHello(): Promise<Order> {
+      return this.appService.createOrder("mushrooms");
   }
 }
