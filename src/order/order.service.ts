@@ -1,5 +1,4 @@
 import { Injectable } from "@nestjs/common";
-import {Order} from '../../order.entity';
 import { Connection, ConnectionManager, Repository } from "typeorm";
 
 

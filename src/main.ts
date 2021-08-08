@@ -1,20 +1,25 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { Fridge } from './fridge.entity';
 import { Ingredient } from './ingredient';
 import { Inventory } from './inventory';
 import { Kitchen } from './kitchen';
 import { Mushrooms } from './mushrooms';
-import { Order } from './order';
+import { Order } from './order.entity';
+import { Ingredients } from './topping';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
     await app.listen(3000);
     
     var m: Mushrooms;
-    var inventory: Inventory;
+    var inventory: Inventory = new Inventory();
     var orders: Order[];
+    var fridge: Fridge = new Fridge();
 
-    inventory.setToppings([m, m]);
+    var toppingsTemp: Ingredients[] = [m, m];
+
+    inventory.setToppings(toppingsTemp);
     const kitchen: Kitchen = new Kitchen(inventory, orders);
 
     var stdin = process.openStdin();
@@ -22,6 +27,8 @@ async function bootstrap() {
     console.log("Please enter the toppings of your choosing: p for peppers, c for corn, m for mushrooms, o for olives");
     stdin.addListener("data", function (d) {
         if (kitchen.checkInventory(d)) {
+            //fridge.removeOne(d);
+            
             console.log("You chose: " +
                 d.toString().trim() + ". Anything else? [y/n]");
         }

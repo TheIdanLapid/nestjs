@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
+@Entity("Orders")
 export class Order {
     @PrimaryGeneratedColumn()
     public id: number;
@@ -9,5 +9,5 @@ export class Order {
     public toppings: string;
 
     @Column()
-    public status: string;
+    public status: number;
 }

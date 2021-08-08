@@ -1,12 +1,38 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Order } from '../order.entity';
+import { Fridge } from './fridge.entity';
+import { Order } from './order.entity';
 
 @Injectable()
 export class AppService {
-    constructor(@InjectRepository(Order) private ordersRepository: Repository<Order>) {
-                
+    fridge: Fridge;
+    constructor(@InjectRepository(Order) private ordersRepository: Repository<Order>, @InjectRepository(Fridge) private fridgeRepository: Repository<Fridge>) {
+    }
+
+    stockFridge(): Repository<Fridge> {
+        this.fridgeRepository.create({
+            corn: 3,
+            peppers: 3,
+            mushrooms: 3,
+            olives: 3
+        })
+        this.fridge = {
+            id: 1,
+            corn: 3,
+            peppers: 3,
+            mushrooms: 3,
+            olives: 3
+        }
+        return this.fridgeRepository;
+    }
+
+    getFridge(): Fridge {
+        return this.fridge;
+    }
+
+    async takeFromFridge(newFridge: Fridge): Promise<Fridge> {
+        return this.fridgeRepository.save(newFridge);
     }
 
     getAll(): Promise<Order[]> {
@@ -25,8 +51,11 @@ export class AppService {
         return;
     }
 
-    createOrder(toppings: string): Promise<Order> {
-        const newOrder = this.ordersRepository.create({ toppings });
+    createOrder(toppings: string, status: number): Promise<Order> {
+        const newOrder = this.ordersRepository.create({
+            toppings: toppings,
+            status: status
+        });
         return this.ordersRepository.save(newOrder);
     }
 
@@ -40,8 +69,4 @@ export class AppService {
         const order = await this.getOneById(id);
         return this.ordersRepository.remove(order);
     }
-
-  getHello(): string {
-    return 'Hello World!';
-  }
 }

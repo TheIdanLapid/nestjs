@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Ingredient } from './ingredient';
 import { Inventory } from './inventory';
-import { Order } from './order';
+import { Order } from './order.entity';
 
 @Injectable()
 export class Kitchen {
